@@ -8,21 +8,21 @@ function love.load()
   people = {}
   cities = {}
 
-  numCitiesH = 2
-  numCitiesW = 2
+  numCitiesH = 3
+  numCitiesW = 3
   numPeople = 100
 
-  cityBorder = 20
-  cityWidth = width - (2*cityBorder) - ((numCitiesW-1)*cityBorder)
-  cityHeight = height - (2*cityBorder) - ((numCitiesH-1)*cityBorder)
+  cityBorder = 25
+  cityWidth = (width/numCitiesW) - cityBorder - cityBorder/(numCitiesW)
+  cityHeight = (height/numCitiesH) - cityBorder - cityBorder/(numCitiesH)
 
   colors = {}
   colors.s = {0.12,0.56,1.00}
   colors.i = {0.65,0.16,0.16}
   colors.r = {0.46,0.53,0.60}
 
-  for i = 1, numCitiesH do    -- make cities
-    for j = 1, numCitiesW do
+  for j = 1, numCitiesH do    -- make cities
+    for i = 1, numCitiesW do
       local city = {}
       city.x = i*cityBorder + (i-1)*cityWidth
       city.y = j*cityBorder + (j-1)*cityHeight
@@ -45,7 +45,7 @@ function love.draw()
 
   for i = 1, #cities do
     local city = cities[i]
-    g.setColor(1, 0, 0)
+    g.setColor(0, 0, 0)
     g.rectangle("line", city.x, city.y, city.w, city.h)
   end
 end
